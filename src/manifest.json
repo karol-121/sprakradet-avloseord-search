@@ -1,0 +1,18 @@
+{
+
+  "description": "Browser extension that implements search functionality for Språkrådets replacement word list.",
+  "manifest_version": 2,
+  "name": "Språkrådet avløserord - search",
+  "version": "1.0",
+  "icons": {
+    "48": "icons/icon-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.sprakradet.no/*/Avloeysarord/*"],
+      "js": ["searchForm.js", "search.js"]
+    }
+  ]
+
+}
