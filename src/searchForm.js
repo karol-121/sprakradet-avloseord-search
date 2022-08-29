@@ -1,3 +1,5 @@
+//script that creates input form for search
+
 const body = document.getElementsByClassName("body")[0];
 
 const divBox = document.createElement("div");
