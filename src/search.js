@@ -1,7 +1,4 @@
-console.log("extension loaded :)");
-
-const tableHeaderRegEx = /\nImportord\nAvløserord\n/;
-const tableSectionHeaderRegEx = /\n\n[A-Z]{1}\n\n.*\n/;
+//main logic
 
 const querystring = document.location.search;
 const params = new URLSearchParams(querystring);
@@ -11,48 +8,33 @@ const list = document.querySelector('tbody');
 const searchInput = document.getElementById('searchInput');
 
 
+//do search if string exist and is not empty
+if (searchTerm != "null" && searchTerm.length > 1) { 
 
-if (searchTerm != "null" && searchTerm.length > 0) { //do search if string exist and is not empty
+  searchInput.value = searchTerm; //put searched term in to search input
 
-  //todo convert single letter searches to indexes "a" -> "#a"
-
-  searchInput.value = searchTerm;
+  body.children[2].remove(); //remove index link while searching as it won't work due to the filtered table
 
   for (let row of list.rows) {
     
-    filter(row, filterAction);
-
-  }
-
-}
-
-
-//this function filters table
-function filter(node, action) {
-
-  //if node is a table header, skip filtering
-  if (node.textContent.match(tableHeaderRegEx)) {
-    return;
-  }
-
-  //if node is a section header, skip filtering
-  if (node.textContent.match(tableSectionHeaderRegEx)) {
-    return;
-  }
-
-  //if node does not contain search term
-  if (node.textContent.indexOf(searchTerm) === -1) {
+    if (row.textContent.indexOf(searchTerm) != -1) {
       
-      action(node); //callback to action
+      addRowNewTable(row);
 
     }
-}
 
+  }
 
-//this function specifies action that will result in filtering, in this case every irrelevant node will be hidden.
-function filterAction(node) {
+  printNewTable();
 
-  node.style.display = "none";
-  //todo: hiding rows in table does not affect altered background thus is does render fail,.
+} else if (searchTerm.length === 1) { //if search term consist only of one letter, convert it to "index search" i.e "a" -> "#a"
+  
+  const searchIndex = searchTerm.toUpperCase();
+
+  if (searchIndex.match(/[A-Z]{1}/)) {//input validation to ensure correct url
+  
+    document.location.replace(document.location.origin+document.location.pathname+"#"+searchIndex);
+
+  }
 
 }

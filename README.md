@@ -1,8 +1,7 @@
 
 # ![logo](src/icons/icon-48.png) Språkrådet avløseord - search
 
-Browser extension that implements search functionality for sprakradets replacement word list.
-Search input and search query for word list is added that makes up the search functionality. 
+Browser extension that implements search functionality for [språkrådets replacement word list](https://www.sprakradet.no/sprakhjelp/Skriverad/Avloeysarord/). Extension adds search input together with search query ("www.example.com/q=%seachterm%") to the main site. Search results are presented by filtering the orginal table so it only contain results.  
 
-## To do
-- Add better support for search, implement scoring system so the results are more of what user wants
+
+
