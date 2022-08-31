@@ -12,13 +12,16 @@ const searchInput = document.getElementById('searchInput');
 if (searchTerm != "null" && searchTerm.length > 1) { 
 
   searchInput.value = searchTerm; //put searched term in to search input
-
+  const term = searchTerm.toUpperCase(); //converting search term to upper case in order to prepare it to comparsion
   body.children[2].remove(); //remove index link while searching as it won't work due to the filtered table
 
   for (let row of list.rows) {
+
+    const rowText = row.textContent.toUpperCase();
     
-    if (row.textContent.indexOf(searchTerm) != -1) {
-      
+    //check if current row contains searching term and it is not index row
+    if (rowText.indexOf(term) != -1 && rowText.indexOf("TIL TOPPEN") === -1) {
+
       addRowNewTable(row);
 
     }

@@ -9,8 +9,7 @@ const tbodyNew = document.createElement("tbody");
 const searchStatusMessage = document.createElement("p");
   searchStatusMessage.innerText = "Ingen resultater funnet!";
   
-//transfer header from old to new table
-tbodyNew.append(headerRow);
+
 
 //add selected rows to new table
 function addRowNewTable(row) {
@@ -22,6 +21,9 @@ function addRowNewTable(row) {
 
 //function thtat swaps new table with the old one
 function printNewTable() {
+
+  //transfer header from old to new table
+  tbodyNew.prepend(headerRow);
 
   table.replaceChild(tbodyNew, tbodyOld);
 
