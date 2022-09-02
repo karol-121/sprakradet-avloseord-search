@@ -1,7 +1,5 @@
 //script that creates input form for search
 
-const body = document.getElementsByClassName("body")[0];
-
 const divBox = document.createElement("div");
   divBox.className = "block database-block"
 
@@ -27,8 +25,7 @@ divWrapper.append(formSearch);
 divWrapper.append(formSubmit);
 
 form.append(divWrapper);
-
 divBox.append(form);
 
-body.insertBefore(divBox, body.children[1]);
-
+DOM_references.bodyDiv.insertBefore(divBox, DOM_references.bodyDiv.children[1]);
+DOM_references.searchInput = formSearch; //update dom reference for search input as it was newly created

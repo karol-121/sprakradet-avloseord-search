@@ -1,20 +1,16 @@
 //script that creates new filtered table
 
-const table = document.querySelector('table');
-const tbodyOld = document.querySelector('tbody');
-const headerRow = tbodyOld.children[0];
-const tbodyNew = document.createElement("tbody");
+const wordListNew = document.createElement("tbody");
 
-//create message object regardles status of the search
-const searchStatusMessage = document.createElement("p");
-  searchStatusMessage.innerText = "Ingen resultater funnet!";
+//create "no result message" to print when nothing is found
+const noResultsMessage = document.createElement("p");
+  noResultsMessage.innerText = "Ingen resultater funnet!";
   
-
 
 //add selected rows to new table
 function addRowNewTable(row) {
 
-  tbodyNew.append(row);
+  wordListNew.append(row);
 
 }
 
@@ -23,14 +19,15 @@ function addRowNewTable(row) {
 function printNewTable() {
 
   //transfer header from old to new table
-  tbodyNew.prepend(headerRow);
+  wordListNew.prepend(DOM_references.wordListHeader);
 
-  table.replaceChild(tbodyNew, tbodyOld);
+  //replace orginal table with the newly created one
+  DOM_references.table.replaceChild(wordListNew, DOM_references.wordList);
 
   //print message if nothing has been found/ table is empty
-  if(tbodyNew.children.length < 2) {
+  if(wordListNew.children.length < 2) {
     
-    table.parentNode.append(searchStatusMessage);
+    DOM_references.table.parentNode.append(noResultsMessage);
     
   }
 

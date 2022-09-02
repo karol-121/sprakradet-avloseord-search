@@ -11,7 +11,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.sprakradet.no/*/Avloeysarord/*"],
-      "js": ["table.js","searchForm.js", "search.js"]
+      "js": ["utilities.js","table.js","searchForm.js","search.js"]
     }
   ]
 
